@@ -1,5 +1,6 @@
+import 'dart:async';
 import 'package:animations/Model/models.dart';
-import 'package:animations/View/animationsScrean.dart';
+import 'package:animations/View/listScrean.dart';
 import 'package:flutter/material.dart';
 
 class Mainscrean extends StatelessWidget {
@@ -24,14 +25,14 @@ class Mainscrean extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Animationsscrean()),
+                  MaterialPageRoute(builder: (context) => ListScrean()),
                 );
               },
               child: Container(
                 height: 100,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.lightGreen,
+                  color: Colors.blue,
                   borderRadius: BorderRadius.circular(32),
                 ),
                 child: Center(

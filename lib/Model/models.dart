@@ -12,7 +12,8 @@ List implicitAnimationName = [
   "AnimatedDefaultTextStyle",
   "AnimatedPhysicalModel",
   "AnimatedSwitcher",
-  "AnimatedFractionallySizedBox",
+  '''Animated
+  FractionallySizedBox''',
   "AnimatedTheme",
   "SliverAnimatedOpacity",
   "TweenAnimationBuilder",
