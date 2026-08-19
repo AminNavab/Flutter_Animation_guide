@@ -1,4 +1,4 @@
-import 'package:animations/View/mainScrean.dart';
+import 'package:animations/View/main_screan.dart';
 import 'package:flutter/material.dart';
 
 void main() {

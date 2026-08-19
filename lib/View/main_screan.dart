@@ -1,6 +1,5 @@
-import 'dart:async';
 import 'package:animations/Model/models.dart';
-import 'package:animations/View/listScrean.dart';
+import 'package:animations/View/list_screan.dart';
 import 'package:flutter/material.dart';
 
 class Mainscrean extends StatelessWidget {
