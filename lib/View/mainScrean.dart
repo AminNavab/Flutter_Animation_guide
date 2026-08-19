@@ -1,4 +1,5 @@
 import 'package:animations/Model/models.dart';
+import 'package:animations/View/animationsScrean.dart';
 import 'package:flutter/material.dart';
 
 class Mainscrean extends StatelessWidget {
@@ -19,15 +20,23 @@ class Mainscrean extends StatelessWidget {
               top: 20,
               bottom: 20,
             ),
-            child: Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.lightGreen,
-                borderRadius: BorderRadius.circular(32),
-              ),
-              child: Center(
-                child: Text(animationstype[0], style: texttheme.bodyLarge),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Animationsscrean()),
+                );
+              },
+              child: Container(
+                height: 100,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.lightGreen,
+                  borderRadius: BorderRadius.circular(32),
+                ),
+                child: Center(
+                  child: Text(animationstype[0], style: texttheme.bodyLarge),
+                ),
               ),
             ),
           ),

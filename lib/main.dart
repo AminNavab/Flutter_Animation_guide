@@ -20,6 +20,11 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
+          bodyMedium: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+          ),
         ),
       ),
       home: Scaffold(body: Mainscrean()),
