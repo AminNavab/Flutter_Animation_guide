@@ -1,5 +1,6 @@
 import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedOpacity.dart';
+import 'package:animations/Animations/ImplicitAnimations/animatedPositioned.dart';
 import 'package:flutter/material.dart';
 
 Map<int, String> animationstype = {
@@ -9,7 +10,7 @@ Map<int, String> animationstype = {
 final Map<int, Widget Function(bool)> implicitAnimationRoutes = {
   0: (status) => Animatedopacity(status: status),
   1: (status) => Animatedcontainer(status: status),
-  // 2: (status) => Animatedpositioned(status: status),
+  2: (status) => Animatedpositioned(status: status),
   // 3: (status) => Animatedrotation(status: status),
   // 4: (status) => Animatedscale(status: status),
   // 5: (status) => Animatedalign(status: status),
