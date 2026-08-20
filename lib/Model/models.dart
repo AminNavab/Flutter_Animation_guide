@@ -1,4 +1,27 @@
-List animationstype = ["Implicit Animations", "Explicit Animations"];
+import 'package:flutter/material.dart';
+
+Map<int, String> animationstype = {
+  0: "Implicit Animations",
+  1: "Explicit Animations",
+};
+Map<int, String> implicitAnimationRouteScrean = {
+  0: "Animatedopacity",
+  1: "Animatedcontainer",
+  2: "Animatedpositioned",
+  3: "Animatedrotation",
+  4: "Animatedscale",
+  5: "Animatedalign",
+  6: "Animatedpadding",
+  7: "Animatedsize",
+  8: "AnimatedcrossFade",
+  9: "AnimateddefaultTextStyle",
+  10: "AnimatedphysicalModel",
+  11: "Animatedswitcher",
+  12: "AnimatedfractionallySizedBox",
+  13: "Animatedtheme",
+  14: "SliveranimatedOpacity",
+  15: "TweenanimationBuilder",
+};
 Map<int, String> implicitAnimationName = {
   0: "AnimatedOpacity",
   1: "AnimatedContainer",
@@ -17,4 +40,22 @@ Map<int, String> implicitAnimationName = {
   13: "AnimatedTheme",
   14: "SliverAnimatedOpacity",
   15: "TweenAnimationBuilder",
+};
+Map<int, Color> colors = {
+  0: Colors.blue,
+  1: Colors.red,
+  2: Colors.green,
+  3: Colors.pink,
+  4: Colors.purple,
+  5: Colors.deepOrange,
+  6: Colors.blueGrey,
+  7: Colors.yellow,
+  8: Colors.red,
+  9: Colors.green,
+  10: Colors.pink,
+  11: Colors.purple,
+  12: Colors.deepOrange,
+  13: Colors.blueGrey,
+  14: Colors.yellow,
+  15: Colors.blue,
 };

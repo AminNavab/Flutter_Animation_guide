@@ -7,59 +7,54 @@ class Mainscrean extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var bodyMargin = MediaQuery.of(context).size.width / 8;
+    var Size = MediaQuery.of(context).size;
+    var bodyMargin = Size.width / 8;
     var texttheme = Theme.of(context).textTheme;
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: bodyMargin,
-              right: bodyMargin,
-              top: 20,
-              bottom: 20,
-            ),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ListScrean()),
-                );
-              },
-              child: Container(
-                height: 100,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(32),
+    return Scaffold(
+      body: Center(
+        child: SizedBox(
+          height: Size.height / 2,
+          child: ListView.builder(
+            itemCount: animationstype.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.only(
+                  left: bodyMargin,
+                  right: bodyMargin,
+                  top: 20,
+                  bottom: 20,
                 ),
-                child: Center(
-                  child: Text(animationstype[0], style: texttheme.bodyLarge),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ListScrean(
+                          keyId: index,
+                          title: animationstype[index]!,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: 100,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                    child: Center(
+                      child: Text(
+                        animationstype[index]!,
+                        style: texttheme.bodyLarge,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: bodyMargin,
-              right: bodyMargin,
-              top: 20,
-              bottom: 20,
-            ),
-            child: Container(
-              height: 100,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.lightGreen,
-                borderRadius: BorderRadius.circular(32),
-              ),
-              child: Center(
-                child: Text(animationstype[1], style: texttheme.bodyLarge),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
