@@ -1,5 +1,7 @@
+import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
 import 'package:animations/Model/models.dart';
 import 'package:animations/View/constants.dart';
+import 'package:animations/View/main_screan.dart';
 import 'package:flutter/material.dart';
 
 class Singlescrean extends StatefulWidget {
@@ -13,30 +15,26 @@ class Singlescrean extends StatefulWidget {
 }
 
 class _SinglescreanState extends State<Singlescrean> {
+  bool status = true;
   @override
   Widget build(BuildContext context) {
-    bool status = true;
     var appSize = MediaQuery.of(context).size;
     var bodyMargin = appSize.width / 10;
     var texttheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: appBar(widget.keyId, context, texttheme, widget.title),
-      body: Center(child: Text(widget.keyId.toString())),
-      bottomNavigationBar: bottomNav(bodyMargin, status, texttheme),
+      body: implicitAnimationRoutes[widget.keyId]?.call(status),
+      bottomNavigationBar: bottomNav(bodyMargin, texttheme),
     );
   }
 
-  Padding bottomNav(double bodyMargin, bool status, TextTheme texttheme) {
+  Padding bottomNav(double bodyMargin, TextTheme texttheme) {
     return Padding(
       padding: EdgeInsets.only(left: bodyMargin, right: bodyMargin, bottom: 30),
       child: GestureDetector(
         onTap: () {
           setState(() {
-            if (status) {
-              status = false;
-            } else {
-              status = true;
-            }
+            status = !status;
           });
         },
         child: Container(

@@ -18,7 +18,7 @@ class ListScrean extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 30, bottom: 30),
         child: ListView.builder(
-          itemCount: implicitAnimationName.length,
+          itemCount: implicitAnimationTitleName.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.only(
@@ -33,7 +33,7 @@ class ListScrean extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => Singlescrean(
                         keyId: index,
-                        title: implicitAnimationName[index]!,
+                        title: implicitAnimationTitleName[index]!,
                       ),
                     ),
                   );
@@ -47,7 +47,7 @@ class ListScrean extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      implicitAnimationName[index]!,
+                      implicitAnimationTitleName[index]!,
                       style: texttheme.bodyLarge,
                       textAlign: TextAlign.center,
                     ),

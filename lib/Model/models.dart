@@ -1,28 +1,30 @@
+import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
 import 'package:flutter/material.dart';
 
 Map<int, String> animationstype = {
   0: "Implicit Animations",
   1: "Explicit Animations",
 };
-Map<int, String> implicitAnimationRouteScrean = {
-  0: "Animatedopacity",
-  1: "Animatedcontainer",
-  2: "Animatedpositioned",
-  3: "Animatedrotation",
-  4: "Animatedscale",
-  5: "Animatedalign",
-  6: "Animatedpadding",
-  7: "Animatedsize",
-  8: "AnimatedcrossFade",
-  9: "AnimateddefaultTextStyle",
-  10: "AnimatedphysicalModel",
-  11: "Animatedswitcher",
-  12: "AnimatedfractionallySizedBox",
-  13: "Animatedtheme",
-  14: "SliveranimatedOpacity",
-  15: "TweenanimationBuilder",
+final Map<int, Widget Function(bool)> implicitAnimationRoutes = {
+  // 0: (status) => Animatedopacity(status: status),
+  1: (status) => Animatedcontainer(status: status),
+  // 2: (status) => Animatedpositioned(status: status),
+  // 3: (status) => Animatedrotation(status: status),
+  // 4: (status) => Animatedscale(status: status),
+  // 5: (status) => Animatedalign(status: status),
+  // 6: (status) => Animatedpadding(status: status),
+  // 7: (status) => Animatedsize(status: status),
+  // 8: (status) => AnimatedcrossFade(status: status),
+  // 9: (status) => AnimateddefaultTextStyle(status: status),
+  // 10: (status) => AnimatedphysicalModel(status: status),
+  // 11: (status) => Animatedswitcher(status: status),
+  // 12: (status) => AnimatedfractionallySizedBox(status: status),
+  // 13: (status) => Animatedtheme(status: status),
+  // 14: (status) => SliveranimatedOpacity(status: status),
+  // 15: (status) => TweenanimationBuilder(status: status),
 };
-Map<int, String> implicitAnimationName = {
+
+Map<int, String> implicitAnimationTitleName = {
   0: "AnimatedOpacity",
   1: "AnimatedContainer",
   2: "AnimatedPositioned",
