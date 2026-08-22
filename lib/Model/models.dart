@@ -1,3 +1,4 @@
+import 'package:animations/Animations/ImplicitAnimations/animatedAlign.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedOpacity.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedPositioned.dart';
@@ -15,7 +16,7 @@ final Map<int, Widget Function(bool)> implicitAnimationRoutes = {
   2: (status) => Animatedpositioned(status: status),
   3: (status) => Animatedrotation(status: status),
   4: (status) => Animatedscale(status: status),
-  // 5: (status) => Animatedalign(status: status),
+  5: (status) => Animatedalign(status: status),
   // 6: (status) => Animatedpadding(status: status),
   // 7: (status) => Animatedsize(status: status),
   // 8: (status) => AnimatedcrossFade(status: status),
