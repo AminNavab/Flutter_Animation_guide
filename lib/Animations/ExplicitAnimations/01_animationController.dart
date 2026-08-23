@@ -1,3 +1,4 @@
+import 'package:animations/Model/models.dart';
 import 'package:flutter/material.dart';
 
 class Animationcontroller extends StatefulWidget {
@@ -56,6 +57,92 @@ class _AnimationcontrollerState extends State<Animationcontroller>
   bool status = true;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 350,
+              child: Center(
+                child: AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, child) {
+                    final size = 100 + (_animationController.value * 120);
+                    return Container(
+                      height: size,
+                      width: size,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.blue,
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
+              child: Container(
+                height: 70,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(26),
+                  color: const Color.fromARGB(255, 134, 208, 243),
+                ),
+                child: Center(
+                  child: Text(
+                    "Controller. ?",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 2,
+                  ),
+                  itemCount: controllerActions.length,
+
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: const Color.fromARGB(255, 134, 208, 243),
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          controllerAction(index);
+                        },
+                        child: Center(
+                          child: Text(
+                            controllerActions[index],
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+    ;
   }
 }

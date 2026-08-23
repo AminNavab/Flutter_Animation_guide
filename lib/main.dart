@@ -1,3 +1,4 @@
+import 'package:animations/Animations/ExplicitAnimations/01_animationController.dart';
 import 'package:animations/View/main_screan.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: Mainscrean(),
+      home: Animationcontroller(),
     );
   }
 }
