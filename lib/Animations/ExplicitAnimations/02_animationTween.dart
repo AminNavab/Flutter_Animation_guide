@@ -10,6 +10,7 @@ class Animationtween extends StatefulWidget {
 class _AnimationtweenState extends State<Animationtween>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
+  int selectedTween = 0;
 
   late final Animation<double> _doubleTween = Tween<double>(
     begin: 100,
@@ -52,6 +53,98 @@ class _AnimationtweenState extends State<Animationtween>
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 350,
+              child: Center(
+                child: AnimatedBuilder(
+                  animation: _animationController,
+                  builder: (context, child) {
+                    switch (selectedTween) {
+                      case 0:
+                        return Container(
+                          height: _doubleTween.value,
+                          width: _doubleTween.value,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.pink,
+                          ),
+                        );
+                      case 1:
+                        return Container(
+                          height: 200,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: _colorTween.value,
+                          ),
+                        );
+                      case 2:
+                        return Align(
+                          alignment: _alignTween.value,
+                          child: Container(
+                            height: 60,
+                            width: 60,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.pink,
+                            ),
+                          ),
+                        );
+                      case 3:
+                        final size = _sizeTween.value;
+                        return Container(
+                          height: size?.height,
+                          width: size?.width,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.pink,
+                          ),
+                        );
+                      case 4:
+                        return Container(
+                          padding: _edgeInsetsTween.value,
+
+                          color: Colors.pink,
+                          child: Text(
+                            "Tweens",
+                            style: TextStyle(fontSize: 24, color: Colors.black),
+                          ),
+                        );
+                      default:
+                        return SizedBox();
+                    }
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
+              child: Container(
+                height: 70,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(26),
+                  color: const Color.fromARGB(255, 134, 208, 243),
+                ),
+                child: Center(
+                  child: Text(
+                    "Animation<?> _controllerX = ?",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+    ;
   }
 }
