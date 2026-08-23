@@ -66,3 +66,25 @@ Map<int, Color> colors = {
   14: Colors.yellow,
   15: Colors.blue,
 };
+List controllerActions = [
+  "forward()",
+  "reverse()",
+  "reset()",
+  "stop()",
+  "repeat()",
+  "animateTo(0.8)",
+  "animateBack(0.3)",
+  "and .....",
+  // "status",
+  // "value = newValue",
+  // "animatedWhit()",
+  // "addStatusListener()",
+];
+List tweenTypes = [
+  "Tween<double>",
+  "ColorTween",
+  "AlignmentTween",
+  "SizeTween",
+  "EdgeInsetsTween",
+  "and .....",
+];
