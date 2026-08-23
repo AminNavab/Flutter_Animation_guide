@@ -1,3 +1,4 @@
+import 'package:animations/Model/models.dart';
 import 'package:flutter/material.dart';
 
 class Animationtween extends StatefulWidget {
@@ -49,6 +50,14 @@ class _AnimationtweenState extends State<Animationtween>
       vsync: this,
       duration: Duration(seconds: 2),
     );
+  }
+
+  void controllerAction(int index) {
+    setState(() {
+      selectedTween = index;
+    });
+    _animationController.reset();
+    _animationController.forward();
   }
 
   @override
@@ -115,7 +124,24 @@ class _AnimationtweenState extends State<Animationtween>
                           ),
                         );
                       default:
-                        return SizedBox();
+                        return Container(
+                          height: 150,
+                          width: 350,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(32),
+                            color: Colors.blueGrey,
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Tween is Hero",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        );
                     }
                   },
                 ),
@@ -138,6 +164,45 @@ class _AnimationtweenState extends State<Animationtween>
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
+              ),
+            ),
+
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12, bottom: 12),
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    childAspectRatio: 2,
+                  ),
+                  itemCount: tweenTypes.length,
+
+                  itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: const Color.fromARGB(255, 134, 208, 243),
+                      ),
+                      child: GestureDetector(
+                        onTap: () {
+                          controllerAction(index);
+                        },
+                        child: Center(
+                          child: Text(
+                            tweenTypes[index],
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
