@@ -23,7 +23,7 @@ class _SinglescreanState extends State<Singlescrean> {
     var texttheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: appBar(widget.keyId, context, texttheme, widget.title),
-      body: implicitAnimationRoutes[widget.keyId]?.call(status),
+      body: implicitAnimationScrean[widget.keyId]!(status),
       bottomNavigationBar: bottomNav(bodyMargin, texttheme),
     );
   }

@@ -1,8 +1,15 @@
 import 'package:animations/Model/models.dart';
+import 'package:animations/View/constants.dart';
 import 'package:flutter/material.dart';
 
 class Animationcontroller extends StatefulWidget {
-  const Animationcontroller({super.key});
+  const Animationcontroller({
+    super.key,
+    required this.keyId,
+    required this.title,
+  });
+  final int keyId;
+  final String title;
 
   @override
   State<Animationcontroller> createState() => _AnimationcontrollerState();
@@ -57,7 +64,9 @@ class _AnimationcontrollerState extends State<Animationcontroller>
   bool status = true;
   @override
   Widget build(BuildContext context) {
+    var texttheme = Theme.of(context).textTheme;
     return Scaffold(
+      appBar: appBar(widget.keyId, context, texttheme, widget.title),
       body: Center(
         child: Column(
           children: [

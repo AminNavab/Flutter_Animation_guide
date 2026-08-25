@@ -1,3 +1,5 @@
+import 'package:animations/Animations/ExplicitAnimations/01_animationController.dart';
+import 'package:animations/Animations/ExplicitAnimations/02_animationTween.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedAlign.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedOpacity.dart';
@@ -10,7 +12,7 @@ Map<int, String> animationstype = {
   0: "Implicit Animations",
   1: "Explicit Animations",
 };
-final Map<int, Widget Function(bool)> implicitAnimationRoutes = {
+final Map<int, Widget Function(bool)> implicitAnimationScrean = {
   0: (status) => Animatedopacity(status: status),
   1: (status) => Animatedcontainer(status: status),
   2: (status) => Animatedpositioned(status: status),
@@ -48,6 +50,20 @@ Map<int, String> implicitAnimationTitleName = {
   14: "SliverAnimatedOpacity",
   15: "TweenAnimationBuilder",
 };
+Map<int, String> explicitAnimationTitleName = {
+  0: "Animation Controller",
+  1: "Animation & Tween",
+  // 2: "Transforms",
+  // 3: "Interval",
+};
+
+final Map<int, Widget Function(int, String)> explicitAnimationScrean = {
+  0: (keyId, title) => Animationcontroller(keyId: keyId, title: title),
+  1: (keyId, title) => Animationtween(keyId: keyId, title: title),
+  // 2: "Transforms",
+  // 3: "Interval",
+};
+
 Map<int, Color> colors = {
   0: Colors.blue,
   1: Colors.red,

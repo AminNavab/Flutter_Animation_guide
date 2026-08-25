@@ -1,8 +1,11 @@
 import 'package:animations/Model/models.dart';
+import 'package:animations/View/constants.dart';
 import 'package:flutter/material.dart';
 
 class Animationtween extends StatefulWidget {
-  const Animationtween({super.key});
+  const Animationtween({super.key, required this.keyId, required this.title});
+  final int keyId;
+  final String title;
 
   @override
   State<Animationtween> createState() => _AnimationtweenState();
@@ -62,7 +65,9 @@ class _AnimationtweenState extends State<Animationtween>
 
   @override
   Widget build(BuildContext context) {
+    var texttheme = Theme.of(context).textTheme;
     return Scaffold(
+      appBar: appBar(widget.keyId, context, texttheme, widget.title),
       body: Center(
         child: Column(
           children: [
