@@ -873,15 +873,618 @@ you can have:
 Start
   │
   ├──► accelerate
-
-│
+  │
+  │
   ├──► overshoot
   │
   ├──► bounce
   │
   └──► settle
-
+```
 
 Physics simulations are especially useful for interactive interfaces.
 
 ---
+
+# 10. Staggered Animations
+
+A staggered animation contains multiple animations that start or finish at different times.
+
+For example:
+
+```text
+Animation
+──────────────────────────────►
+
+Opacity
+████████
+
+Scale
+    ████████
+
+Position
+        ███████████
+
+Color
+              ████████
+```
+
+Instead of animating everything at once, each part gets its own interval.
+
+A common approach is using `Interval`:
+
+```dart
+CurvedAnimation(
+  parent: _controller,
+  curve: const Interval(
+    0.0,
+    0.4,
+  ),
+)
+```
+
+Another animation might use:
+
+```dart
+const Interval(
+  0.3,
+  0.8,
+)
+```
+
+This allows multiple animations to be controlled by a single controller.
+
+---
+
+# 11. Hero Animations
+
+`Hero` animations create a transition between two routes.
+
+Example:
+
+```dart
+Hero(
+  tag: 'profile-image',
+  child: Image.asset(
+    'assets/profile.png',
+  ),
+)
+```
+
+The same `tag` is used on both screens.
+
+Flutter then animates the widget between the routes.
+
+```text
+Screen A
+   │
+   │ Navigate
+   ▼
+Hero Animation
+   │
+   ▼
+Screen B
+```
+
+Hero animations are useful for:
+
+- Images
+- Product cards
+- Profile pictures
+- Shared elements
+- Page transitions
+
+---
+
+# 12. Animation Status
+
+Animations also have a status.
+
+You can listen to the controller:
+
+```dart
+_controller.addStatusListener((status) {
+  print(status);
+});
+```
+
+Possible statuses include:
+
+```dart
+AnimationStatus.dismissed
+AnimationStatus.forward
+AnimationStatus.reverse
+AnimationStatus.completed
+```
+
+This is useful when you need to react to the animation lifecycle.
+
+For example:
+
+```dart
+_controller.addStatusListener((status) {
+  if (status == AnimationStatus.completed) {
+    print('Animation completed');
+  }
+});
+```
+
+---
+
+# 14. Animation Direction
+
+Explicit Animations allow you to control direction.
+
+For example:
+
+```dart
+_controller.forward();
+```
+
+runs forward.
+
+```dart
+_controller.reverse();
+```
+
+runs backward.
+
+This makes it possible to create interactions such as:
+
+```text
+Closed
+  │
+  │ forward()
+  ▼
+Open
+  │
+  │ reverse()
+  ▼
+Closed
+```
+
+This is one of the major differences from simple Implicit Animations.
+
+---
+
+# 15. Multiple Animations with One Controller
+
+One controller can drive multiple animations.
+
+For example:
+
+```dart
+late final Animation<double> _size;
+late final Animation<Color?> _color;
+late final Animation<Alignment> _alignment;
+```
+
+All three can use the same controller:
+
+```dart
+_size = Tween<double>(
+  begin: 100,
+  end: 300,
+).animate(_controller);
+
+_color = ColorTween(
+  begin: Colors.blue,
+  end: Colors.red,
+).animate(_controller);
+
+_alignment = AlignmentTween(
+  begin: Alignment.bottomLeft,
+  end: Alignment.topRight,
+).animate(_controller);
+```
+
+Now one controller controls all of them:
+
+```text
+              AnimationController
+                      │
+          ┌───────────┼───────────┐
+          ▼           ▼           ▼
+         Size        Color      Alignment
+```
+
+This becomes extremely useful for coordinated animations.
+
+---
+
+# 16. Animation Intervals
+
+`Interval` allows different animations to use different portions of the controller's timeline.
+
+For example:
+
+```dart
+final firstAnimation = CurvedAnimation(
+  parent: _controller,
+  curve: const Interval(
+    0.0,
+    0.5,
+  ),
+);
+
+final secondAnimation = CurvedAnimation(
+  parent: _controller,
+  curve: const Interval(
+    0.5,
+    1.0,
+  ),
+);
+```
+
+The result:
+
+```text
+0%                    100%
+│──────────────────────│
+
+First Animation
+████████████
+
+Second Animation
+            ████████████
+```
+
+This is one of the foundations of staggered animations.
+
+---
+
+# 🧹 Lifecycle and Dispose
+
+When using an `AnimationController`, you must dispose of it.
+
+```dart
+@override
+void dispose() {
+  _controller.dispose();
+  super.dispose();
+}
+```
+
+This is important because the controller uses resources that should be released when the widget is removed.
+
+A typical Explicit Animation widget therefore looks like:
+
+```dart
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
+
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget>
+    with SingleTickerProviderStateMixin {
+
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+```
+
+---
+
+# 🧩 A Complete Basic Example
+
+Here is a minimal Explicit Animation using:
+
+- `AnimationController`
+- `Tween`
+- `AnimatedBuilder`
+- `Transform.scale`
+
+```dart
+import 'package:flutter/material.dart';
+
+class BasicAnimation extends StatefulWidget {
+  const BasicAnimation({super.key});
+
+  @override
+  State<BasicAnimation> createState() => _BasicAnimationState();
+}
+
+class _BasicAnimationState extends State<BasicAnimation>
+    with SingleTickerProviderStateMixin {
+
+  late final AnimationController _controller;
+
+  late final Animation<double> _scale;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+
+    _scale = Tween<double>(
+      begin: 1,
+      end: 2,
+    ).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: AnimatedBuilder(
+          animation: _scale,
+          builder: (context, child) {
+            return Transform.scale(
+              scale: _scale.value,
+              child: child,
+            );
+          },
+          child: const FlutterLogo(
+            size: 100,
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _controller.forward();
+        },
+        child: const Icon(Icons.play_arrow),
+      ),
+    );
+  }
+}
+```
+
+The important structure is:
+
+```text
+AnimationController
+        ↓
+Tween<double>
+        ↓
+Animation<double>
+        ↓
+AnimatedBuilder
+        ↓
+Transform.scale
+        ↓
+Widget
+```
+
+---
+
+# 🆚 Implicit vs Explicit
+
+The difference can be summarized as:
+
+```text
+IMPLICIT
+──────────────
+
+Change state
+     ↓
+Flutter handles animation
+     ↓
+New state
+```
+
+```text
+EXPLICIT
+──────────────
+
+AnimationController
+        ↓
+Animation
+        ↓
+Tween / Curve
+        ↓
+Builder / Transition
+        ↓
+Widget
+```
+
+### Use Implicit Animations when:
+
+- The animation is simple
+- You only care about the beginning and ending states
+- You don't need direct control
+- You want concise code
+
+### Use Explicit Animations when:
+
+- You need precise control
+- You need `forward()` / `reverse()`
+- You need `repeat()`
+- You need to pause or stop animations
+- You need multiple coordinated animations
+- You need staggered animations
+- You need physics-based motion
+- You need access to animation progress
+
+---
+
+# 🎯 A Practical Decision Guide
+
+Ask yourself:
+
+### Do I only need to animate a property when its value changes?
+
+Use:
+
+```text
+Implicit Animation
+```
+
+### Do I need to control the animation manually?
+
+Use:
+
+```text
+AnimationController
+```
+
+### Do I need to transform a value?
+
+Use:
+
+```text
+Tween
+```
+
+### Do I want different timing behavior?
+
+Use:
+
+```text
+Curve
+```
+
+### Do I need to rebuild widgets based on animation progress?
+
+Use:
+
+```text
+AnimatedBuilder
+```
+
+### Do I need a predefined animated effect?
+
+Consider:
+
+```text
+Transition Widgets
+```
+
+### Do I need natural physical movement?
+
+Consider:
+
+```text
+Physics Simulation
+```
+
+### Do several animations need to happen at different times?
+
+Consider:
+
+```text
+Intervals / Staggered Animations
+```
+
+---
+
+# 🚀 Recommended Learning Order
+
+A recommended learning path for Explicit Animations is:
+
+```text
+AnimationController
+        ↓
+Animation<T>
+        ↓
+Tween
+        ↓
+Curve
+        ↓
+CurvedAnimation
+        ↓
+AnimatedBuilder
+        ↓
+Transition Widgets
+        ↓
+Transform
+        ↓
+Matrix4
+        ↓
+Animation Status
+        ↓
+Intervals
+        ↓
+Staggered Animations
+        ↓
+Physics-based Animations
+        ↓
+Hero Animations
+        ↓
+Custom Animations
+```
+
+Start with the core animation system before moving into advanced techniques.
+
+---
+
+# 📌 Summary
+
+Explicit Animations give you direct control over Flutter's animation system.
+
+The core concept is:
+
+```text
+Controller
+    ↓
+Progress
+    ↓
+Animation
+    ↓
+Tween / Curve
+    ↓
+Builder / Transition
+    ↓
+Widget
+```
+
+The most important concepts to understand are:
+
+- `AnimationController`
+- `Animation<T>`
+- `Tween`
+- `Curve`
+- `CurvedAnimation`
+- `AnimatedBuilder`
+- Transition widgets
+- `Transform`
+- `Matrix4`
+- Animation status
+- Intervals
+- Staggered animations
+- Physics simulations
+- Hero animations
+
+Once these concepts are understood, you can build much more complex animation systems instead of relying only on ready-made widgets.
+
+---
+
+## 🟢 Next Step
+
+If you haven't already, start with the simpler approach first:
+
+👉 [Explore Implicit Animations](../ImplicitAnimations/README.md)
+
+Then return here and build your understanding of Explicit Animations step by step.
