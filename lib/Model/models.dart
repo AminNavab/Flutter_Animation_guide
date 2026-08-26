@@ -3,6 +3,7 @@ import 'package:animations/Animations/ExplicitAnimations/02_animationTween.dart'
 import 'package:animations/Animations/ImplicitAnimations/animatedAlign.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedOpacity.dart';
+import 'package:animations/Animations/ImplicitAnimations/animatedPdding.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedPositioned.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedRotation.dart';
 import 'package:animations/Animations/ImplicitAnimations/animatedScale.dart';
@@ -19,7 +20,7 @@ final Map<int, Widget Function(bool)> implicitAnimationScrean = {
   3: (status) => Animatedrotation(status: status),
   4: (status) => Animatedscale(status: status),
   5: (status) => Animatedalign(status: status),
-  // 6: (status) => Animatedpadding(status: status),
+  6: (status) => Animatedpadding(status: status),
   // 7: (status) => Animatedsize(status: status),
   // 8: (status) => AnimatedcrossFade(status: status),
   // 9: (status) => AnimateddefaultTextStyle(status: status),
