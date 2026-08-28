@@ -39,15 +39,12 @@ class _AnimationtweenState extends State<Animationtween>
 
   @override
   void dispose() {
-    // TODO: implement dispose
-
     _animationController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _animationController = AnimationController(
       vsync: this,
@@ -215,6 +212,5 @@ class _AnimationtweenState extends State<Animationtween>
         ),
       ),
     );
-    ;
   }
 }

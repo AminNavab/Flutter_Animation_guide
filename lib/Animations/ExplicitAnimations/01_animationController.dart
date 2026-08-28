@@ -152,6 +152,5 @@ class _AnimationcontrollerState extends State<Animationcontroller>
         ),
       ),
     );
-    ;
   }
 }

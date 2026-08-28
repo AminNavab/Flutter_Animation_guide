@@ -1,7 +1,5 @@
-import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
 import 'package:animations/constan/data.dart';
 import 'package:animations/View/constants.dart';
-import 'package:animations/View/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class Singlescreen extends StatefulWidget {
