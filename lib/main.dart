@@ -1,5 +1,3 @@
-import 'package:animations/Animations/ExplicitAnimations/01_animationController.dart';
-import 'package:animations/Animations/ExplicitAnimations/02_animationTween.dart';
 import 'package:animations/View/main_screen.dart';
 import 'package:flutter/material.dart';
 

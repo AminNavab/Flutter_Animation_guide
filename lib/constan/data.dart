@@ -1,12 +1,13 @@
-import 'package:animations/Animations/ExplicitAnimations/01_animationController.dart';
-import 'package:animations/Animations/ExplicitAnimations/02_animationTween.dart';
-import 'package:animations/Animations/ImplicitAnimations/animatedAlign.dart';
-import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
-import 'package:animations/Animations/ImplicitAnimations/animatedOpacity.dart';
-import 'package:animations/Animations/ImplicitAnimations/animatedPdding.dart';
-import 'package:animations/Animations/ImplicitAnimations/animatedPositioned.dart';
-import 'package:animations/Animations/ImplicitAnimations/animatedRotation.dart';
-import 'package:animations/Animations/ImplicitAnimations/animatedScale.dart';
+import 'package:animations/Animations/ExplicitAnimations/01_animation_controller.dart';
+import 'package:animations/Animations/ExplicitAnimations/02_animation_tween.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_align.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_container.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_opacity.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_padding.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_positioned.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_rotation.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_scale.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_size.dart';
 import 'package:flutter/material.dart';
 
 Map<int, String> animationstype = {
@@ -21,7 +22,7 @@ final Map<int, Widget Function(bool)> implicitAnimation = {
   4: (status) => Animatedscale(isAnimating: status),
   5: (status) => Animatedalign(isAnimating: status),
   6: (status) => Animatedpadding(isAnimating: status),
-  // 7: (status) => Animatedsize(status: status),
+  7: (status) => Animatedsize(isAnimating: status),
   // 8: (status) => AnimatedcrossFade(status: status),
   // 9: (status) => AnimateddefaultTextStyle(status: status),
   // 10: (status) => AnimatedphysicalModel(status: status),
