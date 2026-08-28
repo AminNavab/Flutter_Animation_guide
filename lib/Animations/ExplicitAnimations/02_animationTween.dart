@@ -1,4 +1,4 @@
-import 'package:animations/Model/models.dart';
+import 'package:animations/constan/data.dart';
 import 'package:animations/View/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -183,7 +183,7 @@ class _AnimationtweenState extends State<Animationtween>
                     mainAxisSpacing: 10,
                     childAspectRatio: 2,
                   ),
-                  itemCount: tweenTypes.length,
+                  itemCount: tweenAction.length,
 
                   itemBuilder: (context, index) {
                     return Container(
@@ -197,7 +197,7 @@ class _AnimationtweenState extends State<Animationtween>
                         },
                         child: Center(
                           child: Text(
-                            tweenTypes[index],
+                            tweenAction[index],
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,

@@ -1,10 +1,10 @@
 import 'package:animations/View/constants.dart';
-import 'package:animations/View/single_screan.dart';
+import 'package:animations/View/implicits_screen.dart';
 import 'package:flutter/material.dart';
-import '../Model/models.dart';
+import '../constan/data.dart';
 
-class ListScrean extends StatelessWidget {
-  const ListScrean({super.key, required this.keyId, required this.title});
+class ListScreen extends StatelessWidget {
+  const ListScreen({super.key, required this.keyId, required this.title});
   final int keyId;
   final String title;
 
@@ -19,8 +19,8 @@ class ListScrean extends StatelessWidget {
         padding: const EdgeInsets.only(top: 30, bottom: 30),
         child: ListView.builder(
           itemCount: keyId == 0
-              ? implicitAnimationScrean.length
-              : explicitAnimationScrean.length,
+              ? implicitAnimation.length
+              : explicitAnimation.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.only(
@@ -35,12 +35,12 @@ class ListScrean extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) {
                         if (keyId == 0) {
-                          return Singlescrean(
+                          return Singlescreen(
                             keyId: index,
                             title: implicitAnimationTitleName[index]!,
                           );
                         } else {
-                          return explicitAnimationScrean[index]!(
+                          return explicitAnimation[index]!(
                             keyId,
                             explicitAnimationTitleName[index]!,
                           );

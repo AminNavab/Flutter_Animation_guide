@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class Animatedscale extends StatelessWidget {
-  const Animatedscale({super.key, required this.status});
-  final bool status;
+  const Animatedscale({super.key, required this.isAnimating});
+  final bool isAnimating;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: AnimatedScale(
-        scale: status ? 1 : 2,
+        scale: isAnimating ? 1 : 2,
         duration: Duration(seconds: 2),
         child: Container(
           height: 150,

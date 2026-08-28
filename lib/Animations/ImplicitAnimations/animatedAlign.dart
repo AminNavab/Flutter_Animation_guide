@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Animatedalign extends StatelessWidget {
-  const Animatedalign({super.key, required this.status});
-  final bool status;
+  const Animatedalign({super.key, required this.isAnimating});
+  final bool isAnimating;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class Animatedalign extends StatelessWidget {
         height: 500,
         width: 300,
         child: AnimatedAlign(
-          alignment: status ? Alignment.bottomRight : Alignment.topLeft,
+          alignment: isAnimating ? Alignment.bottomRight : Alignment.topLeft,
           duration: Duration(seconds: 2),
           child: Container(
             height: 50,

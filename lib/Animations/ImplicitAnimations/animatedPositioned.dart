@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Animatedpositioned extends StatelessWidget {
-  const Animatedpositioned({super.key, required this.status});
-  final bool status;
+  const Animatedpositioned({super.key, required this.isAnimating});
+  final bool isAnimating;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         AnimatedPositioned(
-          bottom: status ? 150 : 550,
-          left: status ? 100 : 300,
+          bottom: isAnimating ? 150 : 550,
+          left: isAnimating ? 100 : 300,
 
           duration: Duration(seconds: 2),
           curve: Curves.bounceInOut,

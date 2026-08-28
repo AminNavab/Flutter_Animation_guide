@@ -13,14 +13,14 @@ Map<int, String> animationstype = {
   0: "Implicit Animations",
   1: "Explicit Animations",
 };
-final Map<int, Widget Function(bool)> implicitAnimationScrean = {
-  0: (status) => Animatedopacity(status: status),
-  1: (status) => Animatedcontainer(status: status),
-  2: (status) => Animatedpositioned(status: status),
-  3: (status) => Animatedrotation(status: status),
-  4: (status) => Animatedscale(status: status),
-  5: (status) => Animatedalign(status: status),
-  6: (status) => Animatedpadding(status: status),
+final Map<int, Widget Function(bool)> implicitAnimation = {
+  0: (status) => Animatedopacity(isAnimating: status),
+  1: (status) => Animatedcontainer(isAnimating: status),
+  2: (status) => Animatedpositioned(isAnimating: status),
+  3: (status) => Animatedrotation(isAnimating: status),
+  4: (status) => Animatedscale(isAnimating: status),
+  5: (status) => Animatedalign(isAnimating: status),
+  6: (status) => Animatedpadding(isAnimating: status),
   // 7: (status) => Animatedsize(status: status),
   // 8: (status) => AnimatedcrossFade(status: status),
   // 9: (status) => AnimateddefaultTextStyle(status: status),
@@ -58,7 +58,7 @@ Map<int, String> explicitAnimationTitleName = {
   // 3: "Interval",
 };
 
-final Map<int, Widget Function(int, String)> explicitAnimationScrean = {
+final Map<int, Widget Function(int, String)> explicitAnimation = {
   0: (keyId, title) => Animationcontroller(keyId: keyId, title: title),
   1: (keyId, title) => Animationtween(keyId: keyId, title: title),
   // 2: "Transforms",
@@ -97,7 +97,7 @@ List controllerActions = [
   // "animatedWhit()",
   // "addStatusListener()",
 ];
-List tweenTypes = [
+List tweenAction = [
   "Tween<double>",
   "ColorTween",
   "AlignmentTween",

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Animatedrotation extends StatelessWidget {
-  const Animatedrotation({super.key, required this.status});
-  final bool status;
+  const Animatedrotation({super.key, required this.isAnimating});
+  final bool isAnimating;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class Animatedrotation extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedRotation(
-            turns: status ? 1.0 : 0.0,
+            turns: isAnimating ? 1.0 : 0.0,
 
             duration: Duration(seconds: 2),
             // alignment: Alignment.topCenter,
@@ -28,7 +28,7 @@ class Animatedrotation extends StatelessWidget {
           ),
           SizedBox(height: 100),
           AnimatedRotation(
-            turns: status ? 0.0 : 0.5,
+            turns: isAnimating ? 0.0 : 0.5,
             duration: Duration(seconds: 2),
             child: Icon(
               Icons.arrow_right_alt_rounded,

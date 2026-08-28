@@ -1,21 +1,21 @@
 import 'package:animations/Animations/ImplicitAnimations/animatedContainer.dart';
-import 'package:animations/Model/models.dart';
+import 'package:animations/constan/data.dart';
 import 'package:animations/View/constants.dart';
-import 'package:animations/View/main_screan.dart';
+import 'package:animations/View/main_screen.dart';
 import 'package:flutter/material.dart';
 
-class Singlescrean extends StatefulWidget {
+class Singlescreen extends StatefulWidget {
   final int keyId;
   final String title;
 
-  const Singlescrean({super.key, required this.keyId, required this.title});
+  const Singlescreen({super.key, required this.keyId, required this.title});
 
   @override
-  State<Singlescrean> createState() => _SinglescreanState();
+  State<Singlescreen> createState() => _SinglescreenState();
 }
 
-class _SinglescreanState extends State<Singlescrean> {
-  bool status = true;
+class _SinglescreenState extends State<Singlescreen> {
+  bool isAnimating = true;
   @override
   Widget build(BuildContext context) {
     var appSize = MediaQuery.of(context).size;
@@ -23,7 +23,7 @@ class _SinglescreanState extends State<Singlescrean> {
     var texttheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: appBar(widget.keyId, context, texttheme, widget.title),
-      body: implicitAnimationScrean[widget.keyId]!(status),
+      body: implicitAnimation[widget.keyId]!(isAnimating),
       bottomNavigationBar: bottomNav(bodyMargin, texttheme),
     );
   }
@@ -34,7 +34,7 @@ class _SinglescreanState extends State<Singlescrean> {
       child: GestureDetector(
         onTap: () {
           setState(() {
-            status = !status;
+            isAnimating = !isAnimating;
           });
         },
         child: Container(

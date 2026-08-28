@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Animatedpadding extends StatelessWidget {
-  const Animatedpadding({super.key, required this.status});
-  final bool status;
+  const Animatedpadding({super.key, required this.isAnimating});
+  final bool isAnimating;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class Animatedpadding extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: AnimatedPadding(
-            padding: status ? EdgeInsets.all(50) : EdgeInsets.all(100),
+            padding: isAnimating ? EdgeInsets.all(50) : EdgeInsets.all(100),
             duration: Duration(seconds: 2),
             child: Container(
               height: 100,

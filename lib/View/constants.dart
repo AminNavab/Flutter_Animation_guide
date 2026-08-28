@@ -1,4 +1,4 @@
-import 'package:animations/Model/models.dart';
+import 'package:animations/constan/data.dart';
 import 'package:flutter/material.dart';
 
 AppBar appBar(

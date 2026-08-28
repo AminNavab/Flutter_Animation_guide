@@ -1,9 +1,9 @@
-import 'package:animations/Model/models.dart';
-import 'package:animations/View/list_screan.dart';
+import 'package:animations/constan/data.dart';
+import 'package:animations/View/list_screen.dart';
 import 'package:flutter/material.dart';
 
-class Mainscrean extends StatelessWidget {
-  const Mainscrean({super.key});
+class Mainscreen extends StatelessWidget {
+  const Mainscreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class Mainscrean extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ListScrean(
+                        builder: (context) => ListScreen(
                           keyId: index,
                           title: animationstype[index]!,
                         ),
