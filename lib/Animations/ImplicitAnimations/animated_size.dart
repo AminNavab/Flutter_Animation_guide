@@ -21,7 +21,7 @@ class Animatedsize extends StatelessWidget {
               Container(height: 150, width: 100, color: Colors.blueGrey),
               SizedBox(height: 100),
               if (isAnimating)
-                Container(height: 150, width: 100, color: Colors.blueGrey),
+                Container(height: 250, width: 100, color: Colors.blueGrey),
             ],
           ),
         ),
