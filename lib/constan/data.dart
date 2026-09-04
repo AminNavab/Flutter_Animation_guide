@@ -2,6 +2,7 @@ import 'package:animations/Animations/ExplicitAnimations/01_animation_controller
 import 'package:animations/Animations/ExplicitAnimations/02_animation_tween.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_align.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_container.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_cross_fade.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_opacity.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_padding.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_positioned.dart';
@@ -23,7 +24,7 @@ final Map<int, Widget Function(bool)> implicitAnimation = {
   5: (status) => Animatedalign(isAnimating: status),
   6: (status) => Animatedpadding(isAnimating: status),
   7: (status) => Animatedsize(isAnimating: status),
-  // 8: (status) => AnimatedcrossFade(status: status),
+  8: (status) => AnimatedcrossFade(isAnimating: status),
   // 9: (status) => AnimateddefaultTextStyle(status: status),
   // 10: (status) => AnimatedphysicalModel(status: status),
   // 11: (status) => Animatedswitcher(status: status),

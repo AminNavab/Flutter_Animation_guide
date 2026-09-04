@@ -7,20 +7,20 @@ class Animatedsize extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
-        height: 500,
-        width: 150,
-        color: Colors.pink,
-        child: AnimatedSize(
-          duration: Duration(seconds: 2),
-          reverseDuration: Duration(seconds: 5),
+      child: AnimatedSize(
+        duration: Duration(seconds: 2),
+        reverseDuration: Duration(seconds: 5),
+        child: Container(
+          height: isAnimating ? 500 : 700,
+          width: 150,
+          color: Colors.pink,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(height: 100),
               Container(height: 150, width: 100, color: Colors.blueGrey),
               SizedBox(height: 100),
-              if (isAnimating)
+              if (!isAnimating)
                 Container(height: 250, width: 100, color: Colors.blueGrey),
             ],
           ),
