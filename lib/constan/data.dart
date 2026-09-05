@@ -11,6 +11,7 @@ import 'package:animations/Animations/ImplicitAnimations/animated_positioned.dar
 import 'package:animations/Animations/ImplicitAnimations/animated_rotation.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_scale.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_size.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_switcher.dart';
 import 'package:flutter/material.dart';
 
 Map<int, String> animationstype = {
@@ -29,7 +30,7 @@ final Map<int, Widget Function(bool)> implicitAnimation = {
   8: (status) => AnimatedcrossFade(isAnimating: status),
   9: (status) => AnimateddefaultTextStyle(isAnimating: status),
   10: (status) => AnimatedphysicalModel(isAnimating: status),
-  // 11: (status) => Animatedswitcher(status: status),
+  11: (status) => Animatedswitcher(isAnimating: status),
   // 12: (status) => AnimatedfractionallySizedBox(status: status),
   // 13: (status) => Animatedtheme(status: status),
   // 14: (status) => SliveranimatedOpacity(status: status),
