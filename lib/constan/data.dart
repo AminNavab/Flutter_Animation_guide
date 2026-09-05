@@ -4,6 +4,7 @@ import 'package:animations/Animations/ImplicitAnimations/animated_align.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_container.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_cross_fade.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_default_text_style.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_fractionally_sized_box.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_opacity.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_padding.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_physical_model.dart';
@@ -31,7 +32,7 @@ final Map<int, Widget Function(bool)> implicitAnimation = {
   9: (status) => AnimateddefaultTextStyle(isAnimating: status),
   10: (status) => AnimatedphysicalModel(isAnimating: status),
   11: (status) => Animatedswitcher(isAnimating: status),
-  // 12: (status) => AnimatedfractionallySizedBox(status: status),
+  12: (status) => AnimatedfractionallySizedBox(isAnimating: status),
   // 13: (status) => Animatedtheme(status: status),
   // 14: (status) => SliveranimatedOpacity(status: status),
   // 15: (status) => TweenanimationBuilder(status: status),
