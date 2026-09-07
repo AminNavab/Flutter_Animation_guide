@@ -13,6 +13,7 @@ import 'package:animations/Animations/ImplicitAnimations/animated_rotation.dart'
 import 'package:animations/Animations/ImplicitAnimations/animated_scale.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_size.dart';
 import 'package:animations/Animations/ImplicitAnimations/animated_switcher.dart';
+import 'package:animations/Animations/ImplicitAnimations/animated_theme.dart';
 import 'package:flutter/material.dart';
 
 Map<int, String> animationstype = {
@@ -33,7 +34,7 @@ final Map<int, Widget Function(bool)> implicitAnimation = {
   10: (status) => AnimatedphysicalModel(isAnimating: status),
   11: (status) => Animatedswitcher(isAnimating: status),
   12: (status) => AnimatedfractionallySizedBox(isAnimating: status),
-  // 13: (status) => Animatedtheme(status: status),
+  13: (status) => Animatedtheme(isAnimating: status),
   // 14: (status) => SliveranimatedOpacity(status: status),
   // 15: (status) => TweenanimationBuilder(status: status),
 };
